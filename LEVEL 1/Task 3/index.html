@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codsoft Intern - Task 3 - Level 1 - Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,h=630,fit=crop,f=jpeg/Aq20eV79zLfpXV6b/1685789339697-YrDL60zzRBfzM6Wr.jpg">
+</head>
+
+<body>
+    <input type="text" id="result" readonly>
+    <div class="wrapper">
+        <div class="row">
+            <button onclick="clearAll()">AC</button>
+            <button onclick="oneWordDel()">C</button>
+            <button onclick="sqrR()">√</button>
+            <button class="blue" onclick="calcAdd(this)">/</button>
+        </div>
+        <div class="row">
+            <button onclick="calcAdd(this)">7</button>
+            <button onclick="calcAdd(this)">8</button>
+            <button onclick="calcAdd(this)">9</button>
+            <button class="blue" onclick="calcAdd(this)">*</button>
+        </div>
+        <div class="row">
+            <button onclick="calcAdd(this)">4</button>
+            <button onclick="calcAdd(this)">5</button>
+            <button onclick="calcAdd(this)">6</button>
+            <button class="blue" onclick="calcAdd(this)">+</button>
+        </div>
+        <div class="row">
+            <button onclick="calcAdd(this)">1</button>
+            <button onclick="calcAdd(this)">2</button>
+            <button onclick="calcAdd(this)">3</button>
+            <button class="blue" onclick="calcAdd(this)">-</button>
+        </div>
+        <div class="row">
+            <button onclick="calcAdd(this)">0</button>
+            <button onclick="calcAdd(this)">.</button>
+            <button class="equal blue" onclick="exe()">=</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
