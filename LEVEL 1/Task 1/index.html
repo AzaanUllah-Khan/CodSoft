@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>E-commerce Store</title>
+    <!-- Add this within the <head> section of your HTML -->
+    <style>
+        .btn:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path
+                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path
+                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+    </svg>
+    <div class="alert alert-primary d-flex align-items-center justify-content-between" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
+            <use xlink:href="#info-fill" />
+        </svg>
+        <div>
+            50% OFF currently on every product
+        </div>
+        <span class="cancel-icon" style="cursor: pointer;">
+            <i class="fa fa-xmark" id="cancelAlert"></i>
+        </span>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <a class="navbar-brand mt-2 mt-lg-0">
+                    <img src="https://img.freepik.com/premium-vector/creative-abstract-modern-ecommerce-logo-design-colorful-gradient-online-shopping-logo-template_467913-976.jpg?w=2000"
+                        height="30" alt="E-commerce Logo" loading="lazy" />
+                </a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <button class="btn btn-link nav-link">Shop</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link nav-link">Categories</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link nav-link">Deals</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <button class="btn btn-link text-reset me-3">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+
+
+                <div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle d-flex align-items-center hidden-arrow"
+                        id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000"
+                            class="rounded-circle" height="25" alt="User Avatar" loading="lazy" />
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <button class="btn btn-link dropdown-item">My Profile</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-link dropdown-item">Orders</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-link dropdown-item">Settings</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-link dropdown-item">Logout</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Hero Section -->
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="https://advancedbytez.com/wp-content/uploads/2022/03/Accessibility-for-your-Online-eCommerce-Store.jpg"
+                    class="d-block mx-lg-auto img-fluid rounded-lg" alt="E-commerce Products" width="700" height="500"
+                    loading="lazy" style="border-radius: 10px;">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">Discover the Best Deals Online</h1>
+                <p class="lead">Shop from a wide range of products and get amazing discounts. Explore our collection of
+                    high-quality items.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <button class="btn btn-primary btn-lg px-4 me-md-2">Shop Now</button>
+                    <button class="btn btn-outline-secondary btn-lg px-4">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Section -->
+
+    <!-- Carousle -->
+    <div id="carouselExampleLight" class="carousel carousel-light slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleLight" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleLight" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleLight" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="https://img.freepik.com/free-psd/fashion-banner-template_23-2148509060.jpg?w=2000"
+                    class="d-block w-100" alt="..." style="height: 400px; object-fit: cover">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://img.freepik.com/premium-vector/spring-fashion-sale-banner-design-template_2239-1180.jpg?w=2000"
+                    class="d-block w-100" alt="..." style="height: 400px; object-fit: cover">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://c4.wallpaperflare.com/wallpaper/494/596/16/1-frederique-constant-banner-wallpaper-preview.jpg"
+                    class="d-block w-100" alt="..." style="height: 400px; object-fit: cover">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>Some representative placeholder content for the third slide.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleLight" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleLight" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Featured Products Section -->
+    <div class="container py-5">
+        <h2 class="text-center mb-4">Featured Products</h2>
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="https://www.vendhq.com/blog/wp-content/uploads/2015/04/Blog-644x349.jpg"
+                        class="card-img-top" alt="Product 1" height="180" style="object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="https://blog.carts.guru/hubfs/Launch%20a%20New%20Product.png" class="card-img-top"
+                        alt="Product 2" height="180" style="object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 2</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="https://www.magestore.com/wp-content/uploads/2021/07/eCommerce-product-photography.jpg"
+                        class="card-img-top" alt="Product 3" height="180" style="object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 3</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="https://assets.materialup.com/uploads/946b29ae-44f2-448d-ace6-d749963ff53c/preview.png"
+                        class="card-img-top" alt="Product 4" height="180" style="object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 4</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Featured Products Section -->
+
+    <!-- Testimonials Section -->
+    <div id="carouselExampleControls" class="carousel slide text-center carousel-dark" data-mdb-ride="carousel">
+        <!-- Testimonials content goes here -->
+    </div>
+    <!-- Testimonials Section -->
+
+    <!-- Carousel wrapper -->
+    <div id="carouselMultiItemExample" class="carousel slide carousel-dark text-center" data-mdb-ride="carousel">
+        <!-- Controls -->
+        <div class="d-flex justify-content-center mb-4">
+            <button class="carousel-control-prev position-relative" type="button"
+                data-mdb-target="carouselMultiItemExample" data-mdb-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next position-relative" type="button"
+                data-mdb-target="carouselMultiItemExample" data-mdb-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- Inner -->
+        <div class="carousel-inner py-4">
+            <!-- Single item -->
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img class="rounded-circle shadow-1-strong mb-4"
+                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp" alt="avatar"
+                                style="width: 150px;" />
+                            <h5 class="mb-3">Anna Deynah</h5>
+                            <p>UX Designer</p>
+                            <p class="text-muted">
+                                <i class="fas fa-quote-left pe-2"></i>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id
+                                officiis hic tenetur quae quaerat ad velit ab hic tenetur.
+                            </p>
+                            <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-4 d-none d-lg-block">
+                            <img class="rounded-circle shadow-1-strong mb-4"
+                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar"
+                                style="width: 150px;" />
+                            <h5 class="mb-3">John Doe</h5>
+                            <p>Web Developer</p>
+                            <p class="text-muted">
+                                <i class="fas fa-quote-left pe-2"></i>
+                                Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
+                                suscipit laboriosam, nisi ut aliquid commodi.
+                            </p>
+                            <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li>
+                                    <i class="fas fa-star-half-alt fa-sm"></i>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-4 d-none d-lg-block">
+                            <img class="rounded-circle shadow-1-strong mb-4"
+                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar"
+                                style="width: 150px;" />
+                            <h5 class="mb-3">Maria Kate</h5>
+                            <p>Photographer</p>
+                            <p class="text-muted">
+                                <i class="fas fa-quote-left pe-2"></i>
+                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+                                praesentium voluptatum deleniti atque corrupti.
+                            </p>
+                            <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="far fa-star fa-sm"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single item -->
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img class="rounded-circle shadow-1-strong mb-4"
+                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(3).webp" alt="avatar"
+                                style="width: 150px;" />
+                            <h5 class="mb-3">John Doe</h5>
+                            <p>UX Designer</p>
+                            <p class="text-muted">
+                                <i class="fas fa-quote-left pe-2"></i>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id
+                                officiis hic tenetur quae quaerat ad velit ab hic tenetur.
+                            </p>
+                            <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-4 d-none d-lg-block">
+                            <img class="rounded-circle shadow-1-strong mb-4"
+                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar"
+                                style="width: 150px;" />
+                            <h5 class="mb-3">Alex Rey</h5>
+                            <p>Web Developer</p>
+                            <p class="text-muted">
+                                <i class="fas fa-quote-left pe-2"></i>
+                                Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
+                                suscipit laboriosam, nisi ut aliquid commodi.
+                            </p>
+                            <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li>
+                                    <i class="fas fa-star-half-alt fa-sm"></i>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-4 d-none d-lg-block">
+                            <img class="rounded-circle shadow-1-strong mb-4"
+                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(5).webp" alt="avatar"
+                                style="width: 150px;" />
+                            <h5 class="mb-3">Maria Kate</h5>
+                            <p>Photographer</p>
+                            <p class="text-muted">
+                                <i class="fas fa-quote-left pe-2"></i>
+                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+                                praesentium voluptatum deleniti atque corrupti.
+                            </p>
+                            <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="fas fa-star fa-sm"></i></li>
+                                <li><i class="far fa-star fa-sm"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Inner -->
+    </div>
+    <!-- Carousel wrapper -->
+
+    <section id="cta" class="bg-light py-5 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2>Join Our Newsletter</h2>
+                    <p>Stay updated with our latest news and offers.</p>
+                    <form class="container-fluid">
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-6">
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions or need assistance, feel free to contact us.</p>
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="4" placeholder="Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="col-lg-6" style="text-align: right;">
+                    <h2>Our Location</h2>
+                    <p>123 Main Street, City Name</p>
+                    <p>Email: info@ecommercestore.com</p>
+                    <p>Phone: +1 (123) 456-7890</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+
+    <!-- Footer Section -->
+    <footer class="container-fluid p-5 bg-light w-100 m-0">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>About Us</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac urna eu felis dapibus condimentum.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h5>Contact Us</h5>
+                <p>Email: info@ecommercestore.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Follow Us</h5>
+                <button class="btn me-3"><i class="fab fa-facebook"></i></button>
+                <button class="btn me-3"><i class="fab fa-twitter"></i></button>
+                <button class="btn me-3"><i class="fab fa-instagram"></i></button>
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    This is a Landing page made by AzaanUllah Khan <span class="text-primary">
+
+                        #Codsoft #internship
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Include jQuery from a CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Your custom JavaScript code -->
+    <script>
+        $(document).ready(function () {
+            $('#staticBackdrop').modal('show');
+        });
+        $(document).ready(function () {
+            $("#cancelAlert").click(function () {
+                $(".alert").fadeOut("slow", function () {
+                    // Remove the alert from the DOM after fading out
+                    $(this).remove();
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
